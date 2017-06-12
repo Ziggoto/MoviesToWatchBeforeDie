@@ -22,42 +22,20 @@
       f7-navbar
         f7-nav-left
           f7-link(icon='icon-bars', open-panel='left')
-        //- f7-nav-center(sliding='') Lista de Filmes
         | {{movies.title}}
       // Pages
       f7-pages
         f7-page
-          // Comeca aqui...
-          //- f7-list
-          //-   f7-list-group(v-for='value in movies.values')
-          //-     f7-list-item(:title='value.subtitle', group-title='')
-          //-     f7-list-item(v-for='movie in value.movies', :title='movie.title')
-
-          //- f7-block-title Welcome to my App
-          f7-searchbar(cancel-link='Cancel', search-list='#search-list')
+          f7-searchbar(cancel-link='Cancel', search-list='#search-list', @searchbar:search='onSearch')
           // This block will become visible when there is nothing found
           f7-list.searchbar-not-found
             f7-list-item(title='Nothing found')
           // Search through this list
-          //- f7-list#search-list.searchbar-found(media-list='', virtual='', :virtual-items='movies.values[0].movies', :virtual-height='63', :virtual-search-all='searchAll')
           f7-list#search-list.searchbar-found
             f7-list-group(v-for='value in movies.values')
               f7-list-item(:title='value.subtitle', group-title='')
               f7-list-item(v-for='movie in value.movies')
                 movie(:data='movie')
-          //-   // Templte 7 Virtual List Item Template
-          //-   t7-template
-          //-     f7-list-item(media-item='', link='#', :title="'{{title}}'", :subtitle="'{{director}}<br />{{year}}' ")
-          //- f7-block-title Welcome to my App
-          //- f7-searchbar(cancel-link='Cancel', search-list='#search-list')
-          //- // This block will become visible when there is nothing found
-          //- f7-list.searchbar-not-found
-          //-   f7-list-item(title='Nothing found')
-          //- // Search through this list
-          //- f7-list#search-list.searchbar-found(media-list='', virtual='', :virtual-items='movies.values[0].movies', :virtual-height='63', :virtual-search-all='searchAll')
-          //-   // Templte 7 Virtual List Item Template
-          //-   t7-template
-          //-     f7-list-item(media-item='', link='#', :title="'{{title}}'", :subtitle="'{{director}}<br />{{year}}' ")
 </template>
 
 <script>
@@ -101,7 +79,11 @@ export default {
     }
   },
   methods: {
-    searchAll (query) {
+    changeView (index) {
+      // console.log('Change View to ', index)
+      this.movies = json.categories[index]
+    },
+    onSearch: function (query, found) {
       // var self = this;
       // var found = [];
       // for (var i = 0; i < self.items.length; i++) {
@@ -109,11 +91,9 @@ export default {
       //         self.items[i].email.indexOf(query) >= 0 ||
       //         query.trim() === '') found.push(i);
       // }
-      return null;
-    },
-    changeView (index) {
-      // console.log('Change View to ', index)
-      this.movies = json.categories[index]
+      // return found;
+      let matched = []
+      console.log('search', query, found);
     }
   }
 }
@@ -153,6 +133,9 @@ grafite = #35373c
   li
     background-color: grafite
     color: cloud
+
+    .item-inner
+      padding-right: 0px
 
   li.list-group-title
     background-color: caramel

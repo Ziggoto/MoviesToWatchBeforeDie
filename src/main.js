@@ -14,6 +14,8 @@ import Framework7Vue from 'framework7-vue'
  */
 import Framework7Theme from 'framework7/dist/css/framework7.material.min.css'
 import Framework7ThemeColors from 'framework7/dist/css/framework7.material.colors.min.css'
+import Framework7Icons from 'framework7-icons/css/framework7-icons.css'
+import MDI from 'mdi/css/materialdesignicons.min.css'
 
 // Import App Custom Styles
 import AppStyles from './assets/sass/main.scss'
@@ -21,17 +23,11 @@ import AppStyles from './assets/sass/main.scss'
 // Import Routes
 import Routes from './routes.js'
 
-// Import LocalForage
-import VueLocalForage from 'vue-localforage'
-
 // Import App Component
 import App from './main.vue'
 
 // Init F7 Vue Plugin
 Vue.use(Framework7Vue)
-
-// Init LocalForage
-Vue.use(VueLocalForage)
 
 // Init App
 new Vue({
