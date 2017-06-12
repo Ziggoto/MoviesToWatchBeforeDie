@@ -5,7 +5,7 @@
       .left-side(:class='{seen: data.seen}', @click='detail = !detail')
         .movie-title {{data.title}} ({{data.year}})
         .movie-director {{data.director}}
-      .right-side(@click='data.seen = !data.seen')
+      .right-side(@click='check')
         i.mdi.mdi-check(v-if='!data.seen')
         i.mdi.mdi-plus(v-if='data.seen')
   .movie-detail(v-if='detail')
@@ -18,6 +18,12 @@ export default {
   data () {
     return {
       detail: false
+    }
+  },
+  methods: {
+    check () {
+      this.data.seen = !this.data.seen
+      this.$emit('updateState')
     }
   }
 }

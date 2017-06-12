@@ -35,7 +35,7 @@
             f7-list-group(v-for='value in movies.values')
               f7-list-item(:title='value.subtitle', group-title='')
               f7-list-item(v-for='movie in value.movies')
-                movie(:data='movie')
+                movie(:data='movie', @updateState='updateState')
 </template>
 
 <script>
@@ -80,10 +80,9 @@ export default {
   },
   methods: {
     changeView (index) {
-      // console.log('Change View to ', index)
       this.movies = json.categories[index]
     },
-    onSearch: function (query, found) {
+    onSearch (query, found) {
       // var self = this;
       // var found = [];
       // for (var i = 0; i < self.items.length; i++) {
@@ -94,6 +93,16 @@ export default {
       // return found;
       let matched = []
       console.log('search', query, found);
+    },
+    updateState () {
+      console.log('Update state')
+      localForage.setItem('dataset', this.dataset)
+        .then(res => {
+          console.log('About the state... ', res)
+        })
+        .catch(err => {
+          console.error('Oops... ', err)
+        })
     }
   }
 }
