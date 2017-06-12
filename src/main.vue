@@ -25,8 +25,8 @@
         | {{movies.title}}
       // Pages
       f7-pages
-        f7-page
-          f7-searchbar(cancel-link='Cancel', search-list='#search-list', @searchbar:search='onSearch')
+        f7-page(style='background-color: #35373c; color: #cbcbcb')
+          f7-searchbar(cancel-link='Cancel', search-list='#search-list', search-in='.movie-title, .movie-director', @searchbar:search='onSearch')
           // This block will become visible when there is nothing found
           f7-list.searchbar-not-found
             f7-list-item(title='Nothing found')
@@ -82,18 +82,6 @@ export default {
     changeView (index) {
       this.movies = json.categories[index]
     },
-    onSearch (query, found) {
-      // var self = this;
-      // var found = [];
-      // for (var i = 0; i < self.items.length; i++) {
-      //     if (self.items[i].name.indexOf(query) >= 0 ||
-      //         self.items[i].email.indexOf(query) >= 0 ||
-      //         query.trim() === '') found.push(i);
-      // }
-      // return found;
-      let matched = []
-      console.log('search', query, found);
-    },
     updateState () {
       console.log('Update state')
       localForage.setItem('dataset', this.dataset)
@@ -118,7 +106,7 @@ grafite = #35373c
 
 
 #search-list
-  margin-top: 3px
+  margin-top: 0px
 
 .navbar
   background-color: estern_blue
