@@ -63,21 +63,41 @@
 <script>
 import json from './assets/json/movies.json'
 import Movie from './assets/vue/Movie'
+import localForage from 'localforage'
 
 export default {
   components: {
     Movie
   },
   mounted () {
-    // console.log('My Json ', json)
-    // this.$getItem('dataset', () => {
-    //   console.log('my arguments... ', arguments)
-    // })
+    localForage.getItem('dataset')
+      .then(res => {
+        if(!res){
+          console.info('Getting from JSON')
+          this.dataset = json
+          this.movies = json.categories[0]
+
+          return localForage.setItem('dataset', json)
+        }
+        else {
+          console.info('Getting from localForage')
+          this.dataset = res
+          this.movies = res.categories[0]
+
+          return Promise.resolve(true)
+        }
+      })
+      .then(res => {
+        console.log('Was saved? ', res)
+      })
+      .catch(err => {
+        console.error('Oops! ', err)
+      });
   },
   data () {
     return {
-      dataset: json,
-      movies: json.categories[0],
+      dataset: {},
+      movies: {},
     }
   },
   methods: {
