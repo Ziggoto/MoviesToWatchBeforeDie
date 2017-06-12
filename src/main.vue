@@ -8,16 +8,13 @@
     f7-view#left-panel-view(navbar-through='', :dynamic-navbar='true')
       f7-navbar(title='Categorias')
       f7-pages
-        f7-page
-          //- f7-block(inner='')
-          //-   p Left panel content goes here
-          //- f7-block-title Load page in panel
-          //- f7-list
-          //-   f7-list-item(link='/about/', title='About')
-          //-   f7-list-item(link='/form/', title='Form')
-          //- f7-block-title Load page in main view
-          f7-list
-            f7-list-item(v-for='category in dataset.categories', :title='category.title', link-view='#main-view', link-close-panel='')
+        f7-page(style='background-color: #35373c')
+          #panel-content(style='height: 100%; display: flex; flex-direction: column; justify-content: space-between')
+            f7-list
+              f7-list-item.close-panel(v-for='(category, index) in dataset.categories', :title='category.title', @click='changeView(index)', link-view='#main-view', link-close-panel='')
+            #credits
+              div Feito com ♥ por Fábio Theophilo
+              div(style='color: #ffd9a6') Feliz dia dos namorados #[b Victória]!
   // Main Views
   f7-views
     f7-view#main-view(navbar-through='', :dynamic-navbar='true', main='')
@@ -26,6 +23,7 @@
         f7-nav-left
           f7-link(icon='icon-bars', open-panel='left')
         //- f7-nav-center(sliding='') Lista de Filmes
+        | {{movies.title}}
       // Pages
       f7-pages
         f7-page
@@ -71,7 +69,10 @@ export default {
     Movie
   },
   mounted () {
-    console.log('My Json ', json)
+    // console.log('My Json ', json)
+    // this.$getItem('dataset', () => {
+    //   console.log('my arguments... ', arguments)
+    // })
   },
   data () {
     return {
@@ -89,6 +90,10 @@ export default {
       //         query.trim() === '') found.push(i);
       // }
       return null;
+    },
+    changeView (index) {
+      // console.log('Change View to ', index)
+      this.movies = json.categories[index]
     }
   }
 }
@@ -100,10 +105,11 @@ caramel = #ffd9a6
 martini = #b3a2a5
 cloud = #cbcbcb
 estern_blue = #2e9cb1
+grafite = #35373c
 
 
 #search-list
-  margin-top: 5px
+  margin-top: 3px
 
 .navbar
   background-color: estern_blue
@@ -125,6 +131,29 @@ estern_blue = #2e9cb1
 
 .list-block-group
   li
-    /*background-color: martini
-    color: cloud*/
+    background-color: grafite
+    color: cloud
+
+  li.list-group-title
+    background-color: caramel
+
+  .movie-info
+    .movie-title
+      font-weight: bold
+
+    .movie-director
+      color: cloud
+
+#panel-content
+  height: 100%
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+
+  #credits
+    text-align: center
+    margin-bottom: 5px
+
+    .author
+      color: caramel
 </style>
