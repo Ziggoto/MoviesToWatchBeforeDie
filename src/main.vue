@@ -14,7 +14,6 @@
               f7-list-item.close-panel(v-for='(category, index) in dataset.categories', :title='category.title', @click='changeView(index)', link-view='#main-view', link-close-panel='')
             #credits
               div Feito com ♥ por Fábio Theophilo
-              div(style='color: #ffd9a6') Feliz dia dos namorados #[b Victória]!
   // Main Views
   f7-views
     f7-view#main-view(navbar-through='', :dynamic-navbar='true', main='')
