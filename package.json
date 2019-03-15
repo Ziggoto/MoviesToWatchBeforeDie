@@ -1,5 +1,5 @@
 {
-    "name": "com.vick.app",
+    "name": "com.movies.app",
     "version": "1.0.0",
     "description": "Brand new cordova project with framework7 - vue - webpack!",
     "scripts": {
@@ -52,7 +52,7 @@
         "vue": "^2.2.4",
         "vue-localforage": "^0.2.5"
     },
-    "displayName": "VickApp",
+    "displayName": "MoviesToWatchBeforeDie",
     "cordova": {
         "plugins": {
             "cordova-plugin-whitelist": {}

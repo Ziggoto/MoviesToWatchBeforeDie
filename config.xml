@@ -9,7 +9,7 @@
     <author email="dev@cordova.apache.org" href="http://cordova.io">
         Apache Cordova Team
     </author>
-    <icon density="mdpi" height="57" platform="ios" src="vickapp.png" width="57" />
+    <icon density="mdpi" height="57" platform="ios" src="MoviesToWatchBeforeDie.png" width="57" />
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
