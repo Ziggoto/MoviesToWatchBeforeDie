@@ -46,7 +46,7 @@
         "localforage": "^1.5.0",
         "material-design-icons": "^3.0.1",
         "mdi": "^1.9.33",
-        "pug": "^2.0.0-rc.2",
+        "pug": "^3.0.1",
         "stylus": "^0.54.5",
         "stylus-loader": "^3.0.1",
         "vue": "^2.2.4",
