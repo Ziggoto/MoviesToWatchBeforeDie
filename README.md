@@ -6,14 +6,14 @@ I've made this app for a friend of mine who has tons of movie to watch and uses 
 
 ### Screenshot
 
-\*todo\*
+![home-screen](./screenshots/home-screen.png)
 
-## Pre-requisites
+### Pre-requisites
 
 - Node v6.17.1
 - Cordova 8.1.2
 
-## How to run
+### How to run
 
 `$ cordova serve`
 
