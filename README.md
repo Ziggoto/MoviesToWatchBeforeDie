@@ -8,6 +8,15 @@ I've made this app for a friend of mine who has tons of movie to watch and uses 
 
 \*todo\*
 
+## Pre-requisites
+
+- Node v6.17.1
+- Cordova 8.1.2
+
+## How to run
+
+`$ cordova serve`
+
 ### Future works (maybe):
 
 [ ] Adds Vuex
