@@ -19,5 +19,5 @@ I've made this app for a friend of mine who has tons of movie to watch and uses 
 
 ### Future works (maybe):
 
-[ ] Adds Vuex
-[ ] Make a dockerfile
+[ ] Adds Vuex  
+[ ] Make a dockerfile  
